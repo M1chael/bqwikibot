@@ -16,14 +16,10 @@ class WebPage
   private
 
   def get_content(param)
-    uri = make_uri(param)
+    uri = URI(TYPES[@type].sub('<param>', param.to_s))
     http = Net::HTTP.new(uri.host, 80)
     req = Net::HTTP::Get.new(uri, {'User-Agent' => 'BQ wiki bot'})
     @html = Nokogiri::HTML(http.request(req).body)
-  end
-
-  def make_uri(param)
-    URI(TYPES[@type].sub('<param>', param.to_s))
   end
 
 end
