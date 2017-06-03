@@ -6,7 +6,7 @@ class WebPage
 	attr_reader :type, :html
 
   TYPES = { commentators: 'http://4pda.ru/forum/index.php?act=Stats&view=who&t=<param>', 
-    reviews: 'http://4pda.ru/devdb/<param>'}
+    reviews: 'http://4pda.ru/devdb/<param>' }
 
 	def initialize(options)
     @type = options.keys[0]
