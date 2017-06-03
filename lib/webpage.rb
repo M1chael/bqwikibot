@@ -5,7 +5,8 @@ class WebPage
 
 	attr_reader :type, :html
 
-  TYPES = { commentators: 'http://4pda.ru/forum/index.php?act=Stats&view=who&t=<param>' }
+  TYPES = { commentators: 'http://4pda.ru/forum/index.php?act=Stats&view=who&t=<param>', 
+    reviews: 'http://4pda.ru/devdb/<param>'}
 
 	def initialize(options)
     @type = options.keys[0]
@@ -17,10 +18,8 @@ class WebPage
   def get_content(param)
     uri = make_uri(param)
     http = Net::HTTP.new(uri.host, 80)
-req = Net::HTTP::Get.new(uri, {'User-Agent' => 'BQ wiki bot'})
-@html = Nokogiri::HTML(http.request(req).body)
-# @ response.body
-    # @html = Nokogiri::HTML(Net::HTTP.get(URI(TYPES[@type].sub('<param>', param.to_s)), {'User-Agent' => 'BQ wiki bot'}))
+    req = Net::HTTP::Get.new(uri, {'User-Agent' => 'BQ wiki bot'})
+    @html = Nokogiri::HTML(http.request(req).body)
   end
 
   def make_uri(param)

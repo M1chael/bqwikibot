@@ -6,6 +6,9 @@ RSpec.configure do |c|
   c.before(:each) do
     stub_request(:get, 'http://4pda.ru/forum/index.php?act=Stats&t=775878&view=who').
       with(:headers => {'User-Agent'=>'BQ wiki bot'}).
-      to_return(File.read('test/U_Lite_commentators.html'))
+      to_return(File.read('test/U_Lite_commentators.html'))    
+    stub_request(:get, 'http://4pda.ru/devdb/bq_aquaris_u_lite').
+      with(:headers => {'User-Agent'=>'BQ wiki bot'}).
+      to_return(File.read('test/U_Lite_reviews.html'))
   end
 end
