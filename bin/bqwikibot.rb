@@ -23,7 +23,8 @@ require 'yaml'
 wiki = MediaWiki::Butt.new('https://bq.miraheze.org/w/api.php')
 config = YAML.load_file('assets/config.yml')
 wiki.login(config[:login], config[:password])
-page_text = wiki.get_text('X_Pro')
+page_text = wiki.get_text('U_Lite')
+p page_text
 # p page_text.sub('Источники', 'Цветочники')
 # wiki.edit('X_Pro', page_text.sub('Источники', 'Цветочники'), minor = false, bot = true, summary = 'Тестовая ботоправка')
 
