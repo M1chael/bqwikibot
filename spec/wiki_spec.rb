@@ -27,24 +27,30 @@ describe Wiki do
 		it 'updates rating' do
       expect(wiki_lib).to receive(:edit).with('page_name', File.read('test/U_Lite_wiki_rating.txt'), 
         minor = false, bot = true, summary = 'Обновление статистики отзывов на 4PDA')
-      @wiki.update(page: 'page_name', type: :reviews, data: {rating: 7, count: 6})
+      @wiki.update(page: 'page_name', type: :reviews, data: [{rating: 7, count: 6}])
 		end
 
     it 'updates count' do
       expect(wiki_lib).to receive(:edit).with('page_name', File.read('test/U_Lite_wiki_reviews.txt'), 
         minor = false, bot = true, summary = 'Обновление статистики отзывов на 4PDA')
-      @wiki.update(page: 'page_name', type: :reviews, data: {rating: 9, count: 7})      
+      @wiki.update(page: 'page_name', type: :reviews, data: [{rating: 9, count: 7}])      
     end
 
     it 'updates rating and count' do
       expect(wiki_lib).to receive(:edit).with('page_name', File.read('test/U_Lite_wiki_rating_reviews.txt'), 
         minor = false, bot = true, summary = 'Обновление статистики отзывов на 4PDA')
-      @wiki.update(page: 'page_name', type: :reviews, data: {rating: 7, count: 7})          
+      @wiki.update(page: 'page_name', type: :reviews, data: [{rating: 7, count: 7}])          
     end
 
     it 'doesn\'t update' do
       expect(wiki_lib).not_to receive(:edit)
-      @wiki.update(page: 'page_name', type: :reviews, data: {rating: 9, count: 6})  
+      @wiki.update(page: 'page_name', type: :reviews, data: [{rating: 9, count: 6}])  
+    end
+
+    it 'updates commentators' do #TODO
+      expect(wiki_lib).to receive(:edit).with('page_name', File.read('test/U_Lite_wiki_commentators.txt'), 
+        minor = false, bot = true, summary = 'Обновление статистики комментариев на 4PDA')
+      @wiki.update(page: 'page_name', type: :commentators, data: COMMENTATORS)      
     end
 	end
 

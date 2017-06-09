@@ -16,15 +16,15 @@ describe Parser do
 
   describe '#data' do
     it 'returns reviews rating' do
-      expect(reviews.data[:rating]).to eq(8)
+      expect(reviews.data[0][:rating]).to eq(8)
     end
 
     it 'returns reviews count' do
-      expect(reviews.data[:count]).to eq(7)
+      expect(reviews.data[0][:count]).to eq(7)
     end
 
     it 'returns commentators stat' do
-      expect(commentators.data).to eq(COMMENTATORS)
+      expect(commentators.data).to match_array(COMMENTATORS)
     end
   end
 
