@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'mediawiki/butt'
-require 'logger'
 require 'yaml'
 
 wd = File.expand_path(File.dirname(__FILE__))
