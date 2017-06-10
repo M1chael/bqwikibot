@@ -31,7 +31,6 @@ class Parser
           @user = td.search('a').text
           @data << Hash.new
           @data[@user_id][:name] = @user
-          # @data[@total][@user] = Hash.new
         else
           @data[@user_id][:count] = td.text.to_i
           @user_id += 1
