@@ -26,7 +26,7 @@ class Parser
     @total = 0
     @user_id = 0
     table.search('tr').each do |tr|
-      tr.search('td').each do |td|
+      tr.search('td[@class="row1"]').each do |td|
         if td['align'] == 'left'
           @user = td.search('a').text
           @data << Hash.new
