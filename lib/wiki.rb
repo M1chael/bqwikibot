@@ -31,7 +31,7 @@ class Wiki
       if compare.size != 0
           @wiki.edit(options[:page], 
             text.gsub(regexs[options[:type]], substring), 
-            minor = false, bot = true, summary = summaries[options[:type]])
+            {minor: false, bot: true, summary: summaries[options[:type]]})
       end
     end
   end
