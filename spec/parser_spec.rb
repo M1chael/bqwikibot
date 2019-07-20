@@ -4,7 +4,7 @@ require_relative 'spec_helper.rb'
 describe Parser do
 
 	let(:commentators) { Parser.new(type: :commentators, 
-    page: Nokogiri::HTML(open('test/U_Lite_commentators.html'))) }
+    page: Nokogiri::HTML(open('test/U_Lite_commentators2.html'))) }
   let(:reviews) { Parser.new(type: :reviews, 
     page: Nokogiri::HTML(open('test/U_Lite_reviews.html'))) }
 

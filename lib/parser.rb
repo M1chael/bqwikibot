@@ -18,26 +18,21 @@ class Parser
       @data[0][:rating] = page.xpath('//*[@id="comments"]/div[2]/div[1]/div[2]/div[1]').text.to_i
       @data[0][:count] = page.xpath('//*[@id="comments"]/div[2]/div[1]/div[3]').text.split(' ')[-1].to_i
     else
-      count(page.xpath('/html/body/div/table'))
+      count(page.css('div.post_header'))
     end
   end
 
-  def count(table)
+  def count(divs)
     @total = 0
     @user_id = 0
-    table.search('tr').each do |tr|
-      tr.search('td[@class="row1"]').each do |td|
-        if td['align'] == 'left'
-          @user = td.search('a').text
-          @data << Hash.new
-          @data[@user_id][:name] = @user
-        else
-          @data[@user_id][:count] = td.text.to_i
-          @user_id += 1
-          @total += td.text.to_i
-        end
-      end
+    divs.each do |div|
+      @data << Hash.new
+      @data[@user_id][:name] = div.text[0, div.text.rindex(' ')].strip
+      @data[@user_id][:count] = div.text.split[-1].to_i
+      @total += @data[@user_id][:count]
+      @user_id += 1
     end
+
     @data.each do |data|
       data[:pct] = (data[:count].to_f * 100 / @total).round
     end

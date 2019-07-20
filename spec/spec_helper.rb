@@ -13,9 +13,9 @@ RSpec.configure do |c|
   end
 end
 
-COMMENTATORS = [ {name: 'alex12379', count: 293, pct: 18},
-  {name: 'Marko Bruni', count: 109, pct: 7},
-  {name: 'CrazyNut', count: 99, pct: 6},
-  {name: 'jno', count: 97, pct: 6},
-  {name: 'moovel', count: 84, pct: 5}
+COMMENTATORS = [ {name: 'alex12379', count: 532, pct: 13},
+  {name: 'jno', count: 263, pct: 7},
+  {name: 'moovel', count: 182, pct: 5},
+  {name: 'vova0302', count: 177, pct: 4},
+  {name: 'bobrovilya', count: 147, pct: 4}
   ]
