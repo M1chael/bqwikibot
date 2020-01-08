@@ -29,9 +29,9 @@ class Wiki
       substring += "#{match[data_str[0].size*data_str.size*2+1]}"
       compare = matches-data_str
       if compare.size != 0
-          @wiki.edit(options[:page], 
-            text.gsub(regexs[options[:type]], substring), 
-            {minor: false, bot: true, summary: summaries[options[:type]]})
+        @wiki.edit(options[:page], 
+          text.gsub(regexs[options[:type]], substring), 
+          {minor: false, bot: true, summary: summaries[options[:type]]})
       end
     end
   end
